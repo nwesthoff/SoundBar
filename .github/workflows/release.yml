@@ -54,13 +54,20 @@ jobs:
           /usr/bin/codesign --force --deep --sign - --timestamp=none "$APP"
           /usr/bin/codesign --verify --deep --strict --verbose=2 "$APP"
 
-      - name: Package .app into zip
+      - name: Package .app + install.command into zip
         run: |
           APP="build/Build/Products/$CONFIG/$SCHEME.app"
           test -d "$APP" || { echo "App bundle not found at $APP"; exit 1; }
-          mkdir -p dist
+
+          STAGE="dist/$SCHEME-$TAG"
+          rm -rf "$STAGE"
+          mkdir -p "$STAGE"
+          cp -R "$APP" "$STAGE/"
+          cp scripts/install.command "$STAGE/install.command"
+          chmod +x "$STAGE/install.command"
+
           ZIP="dist/$SCHEME-$TAG.zip"
-          /usr/bin/ditto -c -k --sequesterRsrc --keepParent "$APP" "$ZIP"
+          /usr/bin/ditto -c -k --sequesterRsrc --keepParent "$STAGE" "$ZIP"
           echo "ZIP=$ZIP" >> "$GITHUB_ENV"
           shasum -a 256 "$ZIP"
 

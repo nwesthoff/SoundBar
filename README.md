@@ -15,6 +15,37 @@ macOS happily makes any newly-detected device the default: an external monitor's
 - macOS 26.1 or later
 - Xcode 26.1+ to build
 
+## Install (from a Release download)
+
+Releases on GitHub are ad-hoc signed but not notarized by Apple. Without intervention, macOS shows *"Apple could not verify BarAudioSource.app is free of malware..."* on first launch. The release zip ships with an `install.command` that handles this for you.
+
+**Recommended:**
+
+1. Download `BarAudioSource-<version>.zip` from the [Releases](../../releases) page.
+2. Unzip it (double-click).
+3. Double-click **`install.command`** in the unzipped folder. A Terminal window opens, prompts you whether to install into `/Applications`, removes the quarantine attribute, and launches the app.
+
+The first time you run `install.command`, Terminal may itself prompt you because the file came from the internet — confirm and proceed.
+
+**Manual alternative:**
+
+```sh
+unzip BarAudioSource-*.zip
+cd BarAudioSource-*/
+xattr -dr com.apple.quarantine BarAudioSource.app
+open BarAudioSource.app
+```
+
+**GUI alternative (no Terminal):**
+
+1. Move the app into `/Applications`.
+2. Double-click; dismiss the warning.
+3. Open *System Settings → Privacy & Security*, scroll to the bottom, click **Open Anyway** next to the BarAudioSource entry, then confirm.
+
+(macOS 15+ removed the old right-click → Open shortcut, so the System Settings path is the only pure-GUI option.)
+
+If you'd rather avoid all of this, building from source is friction-free — locally-built apps don't carry a quarantine attribute.
+
 ## Build & run
 
 ```sh
