@@ -54,7 +54,7 @@ jobs:
           /usr/bin/codesign --force --deep --sign - --timestamp=none "$APP"
           /usr/bin/codesign --verify --deep --strict --verbose=2 "$APP"
 
-      - name: Package .app + install.command into zip
+      - name: Package .app + install.sh into zip
         run: |
           APP="build/Build/Products/$CONFIG/$SCHEME.app"
           test -d "$APP" || { echo "App bundle not found at $APP"; exit 1; }
@@ -63,8 +63,8 @@ jobs:
           rm -rf "$STAGE"
           mkdir -p "$STAGE"
           cp -R "$APP" "$STAGE/"
-          cp scripts/install.command "$STAGE/install.command"
-          chmod +x "$STAGE/install.command"
+          cp scripts/install.sh "$STAGE/install.sh"
+          chmod +x "$STAGE/install.sh"
 
           ZIP="dist/$SCHEME-$TAG.zip"
           /usr/bin/ditto -c -k --sequesterRsrc --keepParent "$STAGE" "$ZIP"

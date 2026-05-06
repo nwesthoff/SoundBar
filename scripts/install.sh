@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 set -euo pipefail
 
 APP_NAME="BarAudioSource.app"
@@ -7,7 +7,7 @@ SRC="$HERE/$APP_NAME"
 DEST="/Applications/$APP_NAME"
 
 if [ ! -d "$SRC" ]; then
-    echo "Error: $APP_NAME not found next to install.command (looked in $HERE)" >&2
+    echo "Error: $APP_NAME not found next to install.sh (looked in $HERE)" >&2
     exit 1
 fi
 

@@ -17,24 +17,12 @@ macOS happily makes any newly-detected device the default: an external monitor's
 
 ## Install (from a Release download)
 
-Releases on GitHub are ad-hoc signed but not notarized by Apple. Without intervention, macOS shows *"Apple could not verify BarAudioSource.app is free of malware..."* on first launch. The release zip ships with an `install.command` that handles this for you.
+Releases on GitHub are ad-hoc signed but not notarized by Apple, so macOS shows *"Apple could not verify BarAudioSource.app is free of malware..."* on first launch. The release zip ships with `install.sh` to deal with this. Gatekeeper blocks double-clicking the script itself, so it has to be run through a Terminal:
 
-**Recommended:**
+1. Download `BarAudioSource-<version>.zip` from the [Releases](../../releases) page and unzip it.
+2. Open **Terminal**, drag `install.sh` into the window, and press Enter.
 
-1. Download `BarAudioSource-<version>.zip` from the [Releases](../../releases) page.
-2. Unzip it (double-click).
-3. Double-click **`install.command`** in the unzipped folder. A Terminal window opens, prompts you whether to install into `/Applications`, removes the quarantine attribute, and launches the app.
-
-The first time you run `install.command`, Terminal may itself prompt you because the file came from the internet — confirm and proceed.
-
-**Manual alternative:**
-
-```sh
-unzip BarAudioSource-*.zip
-cd BarAudioSource-*/
-xattr -dr com.apple.quarantine BarAudioSource.app
-open BarAudioSource.app
-```
+The script strips the quarantine attribute from the `.app`, optionally copies it into `/Applications`, and launches it.
 
 **GUI alternative (no Terminal):**
 
