@@ -18,7 +18,7 @@ jobs:
   build:
     runs-on: macos-latest
     env:
-      SCHEME: BarAudioSource
+      SCHEME: SoundBar
       CONFIG: Release
       TAG: ${{ github.event.inputs.tag || github.ref_name }}
 
@@ -39,7 +39,7 @@ jobs:
       - name: Build (ad-hoc signed)
         run: |
           xcodebuild \
-            -project BarAudioSource.xcodeproj \
+            -project SoundBar.xcodeproj \
             -scheme "$SCHEME" \
             -configuration "$CONFIG" \
             -derivedDataPath build \
@@ -74,7 +74,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: BarAudioSource-${{ env.TAG }}
+          name: SoundBar-${{ env.TAG }}
           path: ${{ env.ZIP }}
           if-no-files-found: error
 

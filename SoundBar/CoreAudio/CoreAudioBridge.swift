@@ -15,8 +15,8 @@ protocol AudioBridge: AnyObject, Sendable {
 }
 
 nonisolated final class CoreAudioBridge: AudioBridge, @unchecked Sendable {
-    private let log = Logger(subsystem: "nilswesthoff.BarAudioSource", category: "CoreAudio")
-    private let queue = DispatchQueue(label: "BarAudioSource.coreaudio", qos: .userInitiated)
+    private let log = Logger(subsystem: "nilswesthoff.SoundBar", category: "CoreAudio")
+    private let queue = DispatchQueue(label: "SoundBar.coreaudio", qos: .userInitiated)
     private var listeners: [(AudioObjectID, AudioObjectPropertyAddress, AudioObjectPropertyListenerBlock)] = []
 
     deinit {

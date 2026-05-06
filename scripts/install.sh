@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-APP_NAME="BarAudioSource.app"
+APP_NAME="SoundBar.app"
 HERE="$(cd "$(dirname "$0")" && pwd)"
 SRC="$HERE/$APP_NAME"
 DEST="/Applications/$APP_NAME"
@@ -11,8 +11,8 @@ if [ ! -d "$SRC" ]; then
     exit 1
 fi
 
-echo "BarAudioSource installer"
-echo "------------------------"
+echo "SoundBar installer"
+echo "------------------"
 echo
 
 echo "Removing quarantine attribute from $SRC..."

@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct BarAudioSourceApp: App {
+struct SoundBarApp: App {
     @StateObject private var store: PriorityStore
     @StateObject private var coordinator: AudioCoordinator
 

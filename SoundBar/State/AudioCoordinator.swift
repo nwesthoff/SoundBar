@@ -10,7 +10,7 @@ final class AudioCoordinator: ObservableObject {
 
     let store: PriorityStore
     private let bridge: any AudioBridge
-    private let log = Logger(subsystem: "nilswesthoff.BarAudioSource", category: "Coordinator")
+    private let log = Logger(subsystem: "nilswesthoff.SoundBar", category: "Coordinator")
 
     private var enforcing = false
     private var cancellables = Set<AnyCancellable>()
