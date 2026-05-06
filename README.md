@@ -1,10 +1,14 @@
 # SoundBar
 
+<img src="assets/SoundBar%20Icon.png" alt="SoundBar icon" width="128" align="right" />
+
 A macOS menu bar app that keeps your default audio device on the device *you* want, instead of whatever macOS most recently noticed.
 
 You define an ordered priority list for outputs and a separate one for inputs. Whenever a device is connected or disconnected — or when System Settings (or any other app) changes the default — SoundBar picks the highest-priority connected device and snaps the system default back to it.
 
 Disconnected devices stay in the priority list and resume their slot when they reappear.
+
+![SoundBar preview](assets/SoundBar%20Preview.png)
 
 ## Why
 
